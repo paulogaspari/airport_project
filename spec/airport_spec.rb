@@ -103,25 +103,27 @@ describe Airport do
 	end
 
 
-	context '::::::::::::: BOMB THREATS ARE INTRODUCED ::::::::::::::'
+	context '::::::::::::: BOMB THREATS ARE INTRODUCED ::::::::::::::' do
 
 
-	it 'can have bomb threats' do
-		airport.bomb_threats(true)
-		expect(airport.threats).to be_true
-	end
+		it 'can have bomb threats' do
+			airport.bomb_threats(true)
+			expect(airport.threats).to be_true
+		end
 
-	it 'can have a bomb threat and planes cannot take off' do
-		airport.new_plane
-		airport.generate_weather('sunny')
-		airport.bomb_threats(true)
-		expect(airport.can_plane_take_off?).to be_false
-	end
+		it 'can have a bomb threat and planes cannot take off' do
+			airport.new_plane
+			airport.generate_weather('sunny')
+			airport.bomb_threats(true)
+			expect(airport.can_plane_take_off?).to be_false
+		end
 
-	it 'can have a bomb threat called off' do
-		airport.bomb_threats(true)
-		airport.bomb_threats(false)
-		expect(airport.threats).to be_false
+		it 'can have a bomb threat called off' do
+			airport.bomb_threats(true)
+			airport.bomb_threats(false)
+			expect(airport.threats).to be_false
+		end
+
 	end
 
 
