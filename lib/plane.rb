@@ -1,8 +1,12 @@
 class Plane
 
+	attr_reader :pilot, :co_pilot, :stewards
+
 	def initialize
-		@pilot = []
-		@co_pilot = []
-		@stewards = []
+		@pilot = ['Paulo']
+		@co_pilot = ['Gaspar']
+		@stewards = ['nina','joana','rita']
 	end
+
+
 end
