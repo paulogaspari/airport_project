@@ -32,7 +32,7 @@ class Airport
 
 
 	def can_plane_take_off?
-		if checking_weather == 'sunny'
+		if checking_weather == 'sunny' && bomb_threats?
 			true
 		else
 			false
@@ -40,7 +40,7 @@ class Airport
 	end
 
 	def can_plane_land?
-		if checking_weather == 'sunny'
+		if checking_weather == 'sunny' && bomb_threats?
 			true
 		else
 			false
@@ -62,5 +62,10 @@ class Airport
 	def authorized_for_takeoff
 		plane_took_off if can_plane_take_off?
 	end
+
+	def bomb_threats?
+		true
+	end
+
 
 end

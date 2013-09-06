@@ -69,6 +69,8 @@ describe Airport do
 		airport.new_plane
 		airport.generate_weather('stormy')
 		expect(airport.can_plane_take_off?).to be_false
+		expect(airport.list_of_planes.count).to eq 1
+
 	end 
 
 	it "can have an airplane take off with sunny weather" do
@@ -82,7 +84,7 @@ describe Airport do
 		expect(airport.can_plane_land?).to be_false
 	end 
 
-	it "can't have an airplane land with sunny weather" do
+	it "can have an airplane land with sunny weather" do
 		airport.generate_weather('sunny')
 		expect(airport.can_plane_land?).to be_true
 	end 
@@ -93,10 +95,22 @@ describe Airport do
 		expect(airport.list_of_planes.count).to eq 1
 	end
 
+	it 'should have one less plane in the airport when its good weather and a plane takes off' do
+		airport.new_plane
+		airport.generate_weather('sunny')
+		airport.authorized_for_takeoff
+		expect(airport.list_of_planes.count).to eq 0
+	end
 
+	it 'can have a bomb threat' do
+		expect(airport.bomb_threats?).to be true
+	end
 
-	# it 'can have specific weather conditions' do
-	# 	expect(airport.weather.conditions).to eq 'sunny'
-	# end
+	xit 'can have a bomb threat and planes cannot take off' do
+		airport.new_plane
+		airport.generate_weather('sunny')
+		expect(airport.authorized_for_takeoff).to be_false
+	end
+
 
 end
