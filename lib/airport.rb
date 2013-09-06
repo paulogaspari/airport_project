@@ -28,7 +28,6 @@ class Airport
 	def checking_weather
 		airport_weather = @weather.first
 		airport_weather.weather_conditions
-		#returns weather_conditions = stormy or sunny
 	end
 
 
