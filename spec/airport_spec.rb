@@ -130,14 +130,13 @@ describe Airport do
 		context '::::::::::::: AIR TRAFFIC CONTROLLER GIVES PERMISSION ::::::::::::::' do
 
 
-			it 'needs to ask to the air traffic controll permission before a plane departs' do
+			it 'asks controller for permission and departs' do
 				airport.new_plane
+				airport.generate_weather('sunny')
 				airport.all_clear_to_go
-				expect(airport.all_clear_to_go).to be_true
+				expect(airport.list_of_planes.count).to eq 0
 			end
-
-
-
+			
 		end
 
 

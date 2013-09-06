@@ -71,12 +71,13 @@ class Airport
 	def all_clear_to_go
 		controller = Controller.new
 		if controller.give_permission?
-			authorized_for_takeoff || authorized_for_landing
+			authorized_for_takeoff
 			true
 		else
 			false
 		end	
 	end
+
 
 
 end
