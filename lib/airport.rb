@@ -4,13 +4,14 @@ require_relative './weather'
 
 class Airport
 
-	attr_reader :name, :list_of_planes, :capacity, :weather
+	attr_reader :name, :list_of_planes, :capacity, :weather, :threats
 
 	def initialize(name, capacity)
 		@name = name
 		@list_of_planes = []
 		@capacity = capacity
 		@weather = []
+		@threats = false
 	end
 
 	
@@ -32,7 +33,7 @@ class Airport
 
 
 	def can_plane_take_off?
-		if checking_weather == 'sunny' && bomb_threats?
+		if checking_weather == 'sunny' && !@threats
 			true
 		else
 			false
@@ -40,7 +41,7 @@ class Airport
 	end
 
 	def can_plane_land?
-		if checking_weather == 'sunny' && bomb_threats?
+		if checking_weather == 'sunny' && !@threats
 			true
 		else
 			false
@@ -63,8 +64,8 @@ class Airport
 		plane_took_off if can_plane_take_off?
 	end
 
-	def bomb_threats?
-		true
+	def bomb_threats(threats)
+		@threats = threats
 	end
 
 
