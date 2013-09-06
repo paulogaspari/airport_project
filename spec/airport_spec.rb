@@ -127,4 +127,18 @@ describe Airport do
 	end
 
 
+		context '::::::::::::: AIR TRAFFIC CONTROLLER GIVES PERMISSION ::::::::::::::' do
+
+
+			it 'needs to ask to the air traffic controll permission before a plane departs' do
+				airport.new_plane
+				airport.all_clear_to_go
+				expect(airport.all_clear_to_go).to be_true
+			end
+
+
+
+		end
+
+
 end
